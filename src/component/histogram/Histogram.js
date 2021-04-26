@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Histogram.css'
+import { scaleBand} from 'd3';
+import {AxisLeft} from '../axis/AxisLeft'
 
 
 const width = 960;
@@ -43,9 +45,23 @@ function Histogram(countMonths) {
       return months.indexOf(a.month) - months.indexOf(b.month);
     });
   }
- console.log(data)
+
+  const innerHeight = height - margin.top - margin.bottom;
+  const innerWidth = width - margin.left - margin.right;
+
+    const yScale = scaleBand()
+    .domain(data.map((d) => d.month))
+    .range([0, innerHeight])
+    .paddingInner(0.3);
+
+
     return (
         <svg width={width} height={height}>
+            <g transform={`translate(${margin.left},${margin.top})`}>
+                 <AxisLeft yScale={yScale} />
+
+
+            </g>
 
         </svg>
     );
