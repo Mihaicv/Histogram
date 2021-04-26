@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_POSTS_CREATED } from './requestGraphQl';
+import Histogram from './histogram/Histogram'
 
 
 function GetDataFromGraphQl() {
@@ -42,7 +43,7 @@ function GetDataFromGraphQl() {
 
   return (
     <div>
-
+         <Histogram countMonths={countMonths}> </Histogram>
     </div>
   );
 
