@@ -23,8 +23,27 @@ function Histogram(countMonths) {
             break;
   }
 
-console.log("NUMBERRR", maxNumberPosts)
-
+    sortByMonth(data);
+  function sortByMonth(arr) {
+    var months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    arr.sort(function (a, b) {
+      return months.indexOf(a.month) - months.indexOf(b.month);
+    });
+  }
+ console.log(data)
     return (
         <svg width={width} height={height}>
 
