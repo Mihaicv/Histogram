@@ -3,6 +3,7 @@ import './Histogram.css'
 import { scaleBand, scaleLinear} from 'd3';
 import {AxisLeft} from '../axis/AxisLeft'
 import {AxisBottom} from '../axis/AxisBottom'
+import {ShowDataMarks} from '../axis/ShowDataMarks'
 
 
 const width = 960;
@@ -66,6 +67,7 @@ function Histogram(countMonths) {
             <g transform={`translate(${margin.left},${margin.top})`}>
                  <AxisLeft yScale={yScale} />
                  <AxisBottom xScale={xScale} innerHeight={innerHeight} />
+                 <ShowDataMarks data={data} yScale={yScale} xScale={xScale} />
 
 
             </g>
