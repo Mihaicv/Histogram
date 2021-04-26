@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Histogram.css'
-import { scaleBand} from 'd3';
+import { scaleBand, scaleLinear} from 'd3';
 import {AxisLeft} from '../axis/AxisLeft'
+import {AxisBottom} from '../axis/AxisBottom'
 
 
 const width = 960;
@@ -54,11 +55,17 @@ function Histogram(countMonths) {
     .range([0, innerHeight])
     .paddingInner(0.3);
 
+     const xScale = scaleLinear()
+    .domain([0, maxNumberPosts])
+    .range([0, innerWidth]);
+
+
 
     return (
         <svg width={width} height={height}>
             <g transform={`translate(${margin.left},${margin.top})`}>
                  <AxisLeft yScale={yScale} />
+                 <AxisBottom xScale={xScale} innerHeight={innerHeight} />
 
 
             </g>

@@ -1,3 +1,5 @@
+
+
 export const AxisLeft = ({yScale}) =>
 yScale.domain().map((tickValue) => (
   <text
