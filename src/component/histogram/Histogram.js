@@ -11,11 +11,19 @@ function Histogram(countMonths) {
 
     useEffect(()=>{
         if(countMonths){
-            setData(countMonths)
+            setData(countMonths.countMonths)
         }
     },[data,countMonths])
 
+    const { chain } = require('lodash');
+    var sortedObjByCount = chain(data).sortBy('number').reverse().value();
+    var maxNumberPosts; // get max number posts/month
+    for (var i in sortedObjByCount) {
+            maxNumberPosts = sortedObjByCount[i].number;
+            break;
+  }
 
+console.log("NUMBERRR", maxNumberPosts)
 
     return (
         <svg width={width} height={height}>
