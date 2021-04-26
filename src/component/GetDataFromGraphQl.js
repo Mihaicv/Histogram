@@ -21,6 +21,7 @@ function GetDataFromGraphQl() {
         const dataString = `/Date(${postData.createdAt})/`;
         const timestamp = +dataString.replace(/\/Date\((.*?)\)\//g, '$1');
         const x = new Date(timestamp);
+        // console.log("Year",x.getFullYear())
         setEachMonth((n) => [...n, x.toLocaleString('default', { month: 'long' })]);
     });
   }, [posts]);

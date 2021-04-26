@@ -1,4 +1,5 @@
 import './App.css';
+import '../src/component/histogram/Histogram.css'
 import GetDataFromGraphQl from './component/GetDataFromGraphQl'
 import {
   ApolloClient,
@@ -20,7 +21,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-       <h1>Posts created/month</h1>
+       <h1> Number of posts created in each month</h1>
        <GetDataFromGraphQl/>
     </ApolloProvider>
   );

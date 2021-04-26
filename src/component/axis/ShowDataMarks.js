@@ -1,4 +1,4 @@
-
+import '../histogram/Histogram.css'
 
 export const ShowDataMarks = ({ data, yScale, xScale }) =>
   data.map((d) => (
