@@ -16,13 +16,12 @@ function GetDataFromGraphQl() {
   }, [data]);
 
   useEffect(() => {
-    //get the month as text
     posts.map((postData) => {
         const dataString = `/Date(${postData.createdAt})/`;
         const timestamp = +dataString.replace(/\/Date\((.*?)\)\//g, '$1');
         const x = new Date(timestamp);
         // console.log("Year",x.getFullYear())
-        setEachMonth((n) => [...n, x.toLocaleString('default', { month: 'long' })]);
+        setEachMonth((n) => [...n, x.toLocaleString('default', { month: 'long' })]);  //get the months as text
     });
   }, [posts]);
 
@@ -34,7 +33,9 @@ function GetDataFromGraphQl() {
     } else months.set(d, 1);
   });
 
-  const countMonths = []; //list months and the numbers of posts for each month
+  const maxNumberPosts = new Map([...months.entries()].sort((a, b) => b[1] - a[1])).values().next().value; //the largest number of posts in a month
+
+  const countMonths = []; //list months and total numbers of posts for each month
   months.forEach((k, v) => {
     countMonths.push({
       month: v,
@@ -44,7 +45,7 @@ function GetDataFromGraphQl() {
 
   return (
     <div>
-         <Histogram countMonths={countMonths}> </Histogram>
+         <Histogram countMonths={countMonths} maxNumberPosts={maxNumberPosts}> </Histogram>
     </div>
   );
 

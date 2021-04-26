@@ -10,25 +10,17 @@ const width = 960;
 const height = 500;
 const margin = { top: 20, right: 20, bottom: 20, left: 100 };
 
-function Histogram(countMonths) {
+function Histogram({countMonths,maxNumberPosts}) {
     const [data, setData]=useState([]);
 
     useEffect(()=>{
         if(countMonths){
-            setData(countMonths.countMonths)
+            setData(countMonths)
         }
-    },[data,countMonths])
-
-    const { chain } = require('lodash');
-    var sortedObjByCount = chain(data).sortBy('number').reverse().value();
-    var maxNumberPosts; // get max number posts/month
-    for (var i in sortedObjByCount) {
-            maxNumberPosts = sortedObjByCount[i].number;
-            break;
-  }
+    },[countMonths])
 
     sortByMonth(data);
-  function sortByMonth(arr) {
+    function sortByMonth(arr) {
     var months = [
       'January',
       'February',
@@ -60,20 +52,14 @@ function Histogram(countMonths) {
     .domain([0, maxNumberPosts])
     .range([0, innerWidth]);
 
-
-
     return (
         <svg width={width} height={height}>
             <g transform={`translate(${margin.left},${margin.top})`}>
                  <AxisLeft yScale={yScale} />
                  <AxisBottom xScale={xScale} innerHeight={innerHeight} />
                  <ShowDataMarks data={data} yScale={yScale} xScale={xScale} />
-
-
             </g>
-
         </svg>
     );
 }
-
 export default Histogram;
