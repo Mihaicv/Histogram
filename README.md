@@ -6,5 +6,5 @@ Histogram is an application witch fetches a relevantly-sized list of posts from 
 
 The application is based on: React, Apollo, D3,GraphQL.
 
-The challenges were Apollo and D3, I never haven't worked with them.
+The challenges were Apollo and D3, I haven't worked with them before.
 
