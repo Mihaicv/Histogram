@@ -1,5 +1,5 @@
 Histogram is an application witch fetches a relevantly-sized list of posts from the mock GraphQL API available at https://fakerql.goosfraba.ro/ and displays a histogram representing the number of posts created in each month of 2019.
 
 <p align="center">
-<img  src="histogram.jpg" width="350">
+<img  src="images/histogram.jpg" width="350">
 </p>
